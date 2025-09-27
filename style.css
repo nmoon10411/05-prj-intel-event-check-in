@@ -273,6 +273,13 @@ button .fas {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
 
 /* Messages */
 #greeting {
