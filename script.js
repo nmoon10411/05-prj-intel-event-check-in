@@ -1,4 +1,4 @@
-// localStorage.clear();
+localStorage.clear();
 
 console.log("JS is loaded!");
 
@@ -133,5 +133,6 @@ form.addEventListener("submit", function (e) {
   // Reset form
   form.reset();
 });
+
 
 
