@@ -65,7 +65,20 @@ function showCelebration(winningTeam) {
   banner.style.display = "block";
   banner.scrollIntoView({ behavior: "smooth" });
 
-  // Optional: Auto-hide after 5 seconds
+  // Confetti effect
+  for (let i = 0; i < 100; i++) {
+    const confetti = document.createElement("div");
+    confetti.innerHTML = "🎉";
+    confetti.style.position = "fixed";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.top = "-10px";
+    confetti.style.fontSize = "24px";
+    confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear`;
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 5000);
+  }
+
   setTimeout(() => {
     banner.style.display = "none";
   }, 5000);
@@ -117,4 +130,5 @@ form.addEventListener("submit", function (e) {
   // Reset form
   form.reset();
 });
+
 
