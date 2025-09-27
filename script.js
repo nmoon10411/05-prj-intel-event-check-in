@@ -1,5 +1,5 @@
 // Uncomment this once before submission to start fresh, then remove it
-// localStorage.clear();
+localStorage.clear();
 
 console.log("JS is loaded!");
 
@@ -134,3 +134,4 @@ form.addEventListener("submit", function (e) {
   // Reset form
   form.reset();
 });
+
