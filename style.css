@@ -211,6 +211,21 @@ button .fas {
   font-size: 17px;
 }
 
+.attendee-list {
+  margin-top: 20px;
+  text-align: left;
+  padding: 10px;
+  font-size: 15px;
+  color: #475569;
+  border-top: 1px solid #f1f5f9;
+}
+
+.attendee-list p {
+  margin: 5px 0;
+}
+
+
+
 /* Progress container - simplified */
 .progress-container {
   width: 100%;
