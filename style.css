@@ -252,6 +252,28 @@ button .fas {
   margin-top: 0;
 }
 
+
+.celebration-banner {
+  display: none;
+  background: #00c7fd;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px auto;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 600px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
 /* Messages */
 #greeting {
   font-weight: 500;
