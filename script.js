@@ -1,3 +1,5 @@
+localStorage.clear();
+
 console.log("JS is loaded!");
 
 // Elements
@@ -115,3 +117,4 @@ form.addEventListener("submit", function (e) {
   // Reset form
   form.reset();
 });
+
