@@ -1,4 +1,5 @@
-localStorage.clear();
+// Uncomment this once before submission to start fresh, then remove it
+// localStorage.clear();
 
 console.log("JS is loaded!");
 
@@ -23,6 +24,7 @@ let teamCounts = JSON.parse(localStorage.getItem("teamCounts")) || {
 };
 let attendees = JSON.parse(localStorage.getItem("attendees")) || [];
 const maxGoal = 50;
+let celebrationShown = false; // Track if celebration was shown
 
 // Team labels
 const teamNames = {
@@ -56,7 +58,7 @@ function saveData() {
   localStorage.setItem("attendees", JSON.stringify(attendees));
 }
 
-// Celebration banner function (outside the form submit)
+// Celebration banner function
 function showCelebration(winningTeam) {
   const banner = document.getElementById("celebrationBanner");
   const teamSpan = document.getElementById("winningTeam");
@@ -79,6 +81,7 @@ function showCelebration(winningTeam) {
     setTimeout(() => confetti.remove(), 5000);
   }
 
+  // Auto-hide banner after 5 seconds
   setTimeout(() => {
     banner.style.display = "none";
   }, 5000);
@@ -122,13 +125,12 @@ form.addEventListener("submit", function (e) {
   greeting.classList.add("success-message");
   greeting.style.display = "block";
 
-  // Check for celebration
-  if (totalCount >= maxGoal) {
+  // Trigger celebration once at exactly 50
+  if (totalCount === maxGoal && !celebrationShown) {
     showCelebration(getWinningTeam());
+    celebrationShown = true;
   }
 
   // Reset form
   form.reset();
 });
-
-
