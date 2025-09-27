@@ -1,13 +1,13 @@
-// Test if JS is loading
-console.log("JS file loaded!");
+// Test JS loading
+console.log("JS is loaded!");
 
-// Get elements
+// Select elements
 const form = document.getElementById("checkInForm");
 const attendeeNameInput = document.getElementById("attendeeName");
 const teamSelect = document.getElementById("teamSelect");
-const greeting = document.getElementById("greeting");
 const attendeeCount = document.getElementById("attendeeCount");
 const progressBar = document.getElementById("progressBar");
+const greeting = document.getElementById("greeting");
 const waterCount = document.getElementById("waterCount");
 const zeroCount = document.getElementById("zeroCount");
 const powerCount = document.getElementById("powerCount");
@@ -19,20 +19,19 @@ const maxGoal = 50;
 
 // Listen for form submission
 form.addEventListener("submit", function (e) {
-  e.preventDefault();
+  e.preventDefault(); // stop page reload
   console.log("Form submitted");
 
-  // Get input values
   const name = attendeeNameInput.value.trim();
   const team = teamSelect.value;
 
   if (!name || !team) return;
 
-  // Increment counts
+  // Update counts
   totalCount++;
   teamCounts[team]++;
 
-  // Update total attendance
+  // Show total count
   attendeeCount.textContent = totalCount;
 
   // Update team counts
@@ -41,14 +40,14 @@ form.addEventListener("submit", function (e) {
   powerCount.textContent = teamCounts.power;
 
   // Update progress bar
-  const percentage = (totalCount / maxGoal) * 100;
-  progressBar.style.width = percentage + "%";
+  const percent = (totalCount / maxGoal) * 100;
+  progressBar.style.width = percent + "%";
 
   // Show greeting
   const teamNames = {
     water: "Team Water Wise 🌊",
     zero: "Team Net Zero 🌿",
-    power: "Team Renewables ⚡",
+    power: "Team Renewables ⚡"
   };
   greeting.textContent = `Welcome, ${name}! You're on ${teamNames[team]}.`;
   greeting.classList.add("success-message");
