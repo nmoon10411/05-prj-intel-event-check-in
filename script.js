@@ -1,3 +1,4 @@
+// localStorage.clear();
 
 console.log("JS is loaded!");
 
