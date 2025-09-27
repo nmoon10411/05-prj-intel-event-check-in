@@ -22,6 +22,13 @@ let teamCounts = JSON.parse(localStorage.getItem("teamCounts")) || {
 let attendees = JSON.parse(localStorage.getItem("attendees")) || [];
 const maxGoal = 50;
 
+// Team labels
+const teamNames = {
+  water: "Team Water Wise 🌊",
+  zero: "Team Net Zero 🌿",
+  power: "Team Renewables ⚡"
+};
+
 // Update UI from saved data on page load
 function updateUI() {
   attendeeCount.textContent = totalCount;
@@ -45,6 +52,34 @@ function saveData() {
   localStorage.setItem("totalCount", totalCount);
   localStorage.setItem("teamCounts", JSON.stringify(teamCounts));
   localStorage.setItem("attendees", JSON.stringify(attendees));
+}
+
+// Celebration banner function (outside the form submit)
+function showCelebration(winningTeam) {
+  const banner = document.getElementById("celebrationBanner");
+  const teamSpan = document.getElementById("winningTeam");
+
+  teamSpan.textContent = winningTeam;
+  banner.style.display = "block";
+  banner.scrollIntoView({ behavior: "smooth" });
+
+  // Optional: Auto-hide after 5 seconds
+  setTimeout(() => {
+    banner.style.display = "none";
+  }, 5000);
+}
+
+// Get winning team
+function getWinningTeam() {
+  let maxCount = 0;
+  let winner = "";
+  for (let team in teamCounts) {
+    if (teamCounts[team] > maxCount) {
+      maxCount = teamCounts[team];
+      winner = teamNames[team];
+    }
+  }
+  return winner || "No team yet";
 }
 
 // Form submit
@@ -74,31 +109,9 @@ form.addEventListener("submit", function (e) {
 
   // Check for celebration
   if (totalCount >= maxGoal) {
-    setTimeout(() => {
-      alert(`🎉 Goal reached! Winning team: ${getWinningTeam()} 🎉`);
-    }, 300);
+    showCelebration(getWinningTeam());
   }
 
   // Reset form
   form.reset();
 });
-
-// Team labels
-const teamNames = {
-  water: "Team Water Wise 🌊",
-  zero: "Team Net Zero 🌿",
-  power: "Team Renewables ⚡"
-};
-
-// Get winning team
-function getWinningTeam() {
-  let maxCount = 0;
-  let winner = "";
-  for (let team in teamCounts) {
-    if (teamCounts[team] > maxCount) {
-      maxCount = teamCounts[team];
-      winner = teamNames[team];
-    }
-  }
-  return winner || "No team yet";
-}
